@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .body12 {
+            /* width: 100vw;
+            height: 100vh; */
+            display: flex;
+            justify-content: center;
+            
+            /* backdrop-filter: blur(10px); */
+        }
+        header{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: url(./WhatsApp\ Image\ 2023-12-20\ at\ 12.23.43\ AM.jpeg);
+            background-size: cover;
+            z-index:-2;
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+            width:99vw;
+            height: 100vh;
+            box-sizing: border-box;
+            /* backdrop-filter: blur(10px); */
+        }
+        header::after{
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: -1;
+            background-color: rgb(28, 16, 16,0.6);
+            width:100%;
+            height: 100%;
+            /* box-sizing: border-box; */
+            /* backdrop-filter: blur(10px); */
+        }
+
+        /* body::after {
+            content: '';
+            background: url(./WhatsApp\ Image\ 2023-12-20\ at\ 12.23.43\ AM.jpeg);
+            background-size: cover;
+            z-index: 4;
+            background-repeat: no-repeat;
+            background-position: center center;
+        } */
+
+        #main {
+            /* background-color: black; */
+            /* margin: auto; */
+            width: 500px;
+            height: 500px;
+        }
+
+        .first {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 500px;
+            height: 250px;
+            /* background-color: rgb(128, 146, 73); */
+        }
+
+        .second {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 500px;
+            height: 100px;
+            /* background-color: rgb(101, 130, 175); */
+        }
+
+        .third {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 500px;
+            height: 150px;
+            /* background-color: rgb(110, 155, 62); */
+        }
+
+        .options {
+            border: 2px solid rgb(51, 0, 255);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background-color: rgb(179, 183, 185, 0.77);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        #text {
+            /* margin: 12px; */
+            padding: 12px;
+            font-size: larger;
+            background-color: aliceblue;
+            border-radius: 5px;
+        }
+
+        #rock:hover {
+            border: 2px solid rgb(207, 252, 10);
+            width: 90px;
+            height: 90px;
+            transition: all 1 ease;
+        }
+
+        #paper:hover {
+            width: 90px;
+            border: 2px solid rgb(104, 255, 44);
+            height: 90px;
+            transition: all 1 ease;
+        }
+
+        #Scissors:hover {
+            width: 90px;
+            border: 2px solid rgb(217, 255, 0);
+            height: 90px;
+            transition: all 1 ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cant"></header>
+    <div class="body12">
+        <div id="main" >
+            <div class="first">
+                <div id="rock" class="options">Rock</div>
+                <div id="paper" class="options">Paper</div>
+                <div id="Scissors" class="options">Scissors</div>
+            </div>
+            <div class="second">
+                <div class="options">YOU=<span id="you">0</span></div>
+                <div class="options">COMP=<span id="comp">0</span></div>
+            </div>
+            <div class="third">
+                <div id="text">
+                    <div id="text2">Select One </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let rock = document.getElementById('rock')
+        let paper = document.getElementById('paper')
+        let scissors = document.getElementById('Scissors')
+        let text2 = document.getElementById('text2')
+        let text = document.getElementById('text')
+        let you = document.getElementById('you')
+        let comp = document.getElementById('comp')
+        let same = document.getElementById('same')
+
+        let a = 0  //computer
+        let b = 0; //you
+        let c = 0; // same
+
+
+        function random() {
+            let a = 1
+            let b = 4
+            let ranNum = a + (b - a) * Math.random()
+            let ran1ex = Math.floor(ranNum)
+            return ran1ex
+        }
+
+        rock.addEventListener('click', () => {
+            if (random() == 1) {
+                text2.innerHTML = `Same, You and Computer select rock`
+                text.style.backgroundColor = '#816e6e'
+                same.innerHTML = c = c + 1;
+
+            }
+            else if (random() == 2) {
+                text2.innerHTML = `Computer Win, You select rock and computer select paper `
+                text.style.backgroundColor = `#c94141`
+                comp.innerHTML = a = a + 1
+
+            }
+            else if (random() == 3) {
+                text2.innerHTML = `you Win, You select rock and computer select Scissors `
+                text.style.backgroundColor = 'skyblue'
+                you.innerHTML = b = b + 1
+            }
+
+
+        })
+        paper.addEventListener('click', () => {
+            if (random() == 1) {
+                text2.innerHTML = `You win, you select paper and computer select rock `
+                text.style.backgroundColor = 'skyblue'
+                you.innerHTML = b = b + 1
+            }
+            else if (random() == 2) {
+                text2.innerHTML = `Same, you and computer select same paper`
+                text.style.backgroundColor = '#816e6e'
+                same.innerHTML = c = c + 1;
+            }
+            else if (random() == 3) {
+                text2.innerHTML = `Computer Win, you select paper and computer select Scissors `
+                text.style.backgroundColor = `#c94141`
+                comp.innerHTML = a = a + 1
+            }
+
+        })
+        scissors.addEventListener('click', () => {
+
+            if (random() == 1) {
+                text2.innerHTML = `Computer Win , you select Scissors and computer select rock`
+                text.style.backgroundColor = `#c94141`
+                comp.innerHTML = a = a + 1
+            }
+            else if (random() == 2) {
+                text2.innerHTML = `You Win, You select Scissors and computer select paper `
+                text.style.backgroundColor = 'skyblue'
+                you.innerHTML = b = b + 1
+
+            }
+            else if (random() == 3) {
+                text2.innerHTML = `Same, you and computer select same Scissors`
+                text.style.backgroundColor = '#816e6e'
+                same.innerHTML = c = c + 1;
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
